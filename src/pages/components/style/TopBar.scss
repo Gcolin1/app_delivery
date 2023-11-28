@@ -1,0 +1,45 @@
+.button-disponivel{
+    border: none;
+    background-color: #18C775;
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    color: #fff;
+}
+
+.button-indisponivel{
+    border: none;
+    background-color: #CACACA;
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-size: 1em;
+    font-weight: 600;
+    color: #fff;
+}
+
+.top{
+    display: flex;
+    height: 80;
+    width: 100%;
+    padding: 20px 0px;
+    justify-content: space-between;
+    align-items: center;
+
+    .buttons_top{
+        display: flex;
+
+        .vehicle{
+            margin-right: 15px;
+            border: none;
+            padding: 5px;
+            border-radius: 20px;
+            background-color: #f2f2f2;
+
+            .icon{
+                color: #70BF4B;
+                font-size: 1.3em;
+            }
+        }
+    }
+}

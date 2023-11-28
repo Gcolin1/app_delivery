@@ -1,0 +1,225 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.topBar{
+    background-color: #05C6F1;
+    width: 100%;
+    display: flex;
+    padding: 15px 20px;
+    align-items: center;    
+
+    .icon{
+        color: #fff;
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+
+    p{
+        color: #fff;
+        font-weight: bold;
+        margin-left: 25%;
+        font-size: 1.2em;
+    }
+}
+
+.order-values{
+    margin: 20px 20px;
+    padding: 10px 20px;
+    background-color: #F9F9F9;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
+    box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
+
+    div{
+        justify-content: space-between;
+        padding: 10px 0;
+        text-align: center;
+        
+
+        p{
+            font-weight: bold;
+            color: #4E4E4E
+        }
+
+        h4{
+            font-weight: bold;
+            color: #4E4E4E;
+            font-size: 0.8em;
+            text-decoration: none;
+        }
+    }
+
+    .total{
+    
+        p{
+            color: #18C775;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+    }
+
+    .item1{
+        border-bottom: dotted 2px #4E4E4E;
+        
+    }
+
+}
+
+.container-route{
+    margin: 0 20px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
+    box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
+
+    .content-time-line{
+        padding-left: 40px;
+    }
+
+    .info-client, .info-loja{
+        color: #4E4E4E;
+
+        p{
+            margin: 3px 0;
+        }
+    }
+
+    .top-container-route{
+        background-color: #05C6F1;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .time-line-route{
+        border-left: 2px dashed #A1A1A1;
+
+        .content-route-order{
+            display: flex;
+            padding: 30px 0;
+            position: relative;
+            right: 22px;
+        }
+
+        .content-icon{
+             width: 40px; 
+             height: 40px;
+             background-color: #05C6F1;
+             display: flex;
+             justify-content: center;
+             margin-right: 10px;
+             border-radius: 5px;
+             align-items: center;
+        }
+
+        .icon{
+            color: #fff;
+            font-size: 1.3em;
+        }
+
+        .buttons{
+            display: flex;
+            margin-top: 5px;
+            
+            button{
+                margin-right: 10px;
+            }
+        }
+
+        .button-map, .button-phone{
+            margin-top: 5px;
+            border: none;
+            padding: 10px 10px;
+            font-size: 0.8em;
+            font-weight: bold;
+            border-radius: 5px;
+            color: #fff;
+            background: linear-gradient(90deg, rgba(5,198,241,1) 30%, rgba(112,191,75,1) 73%);
+
+            .icon-map{
+                color: #fff;
+                margin-right: 5px;
+            }
+        }
+    }
+}
+
+.content-total-order{
+    margin: 20px;
+    border-radius: 10px;
+    padding: 0 20px;
+    -webkit-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
+    box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
+
+    .value1{
+        border-bottom: #A1A1A1 dashed 2px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        span{
+            color: #18C775;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .order-itens{
+            display: flex;
+            align-items: center;
+
+            h4{
+                color: #4E4E4E;
+                padding: 5px;
+                border: solid #4E4E4E 2px;
+                border-radius: 3px;
+            }
+
+            p{
+                margin-left: 10px;
+                font-weight: bold;
+                color: #4E4E4E;
+            }
+        }
+    }
+
+    .value1, .value2{
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    .value2{
+        color: #4E4E4E;
+        font-weight: bold;
+
+        .observacoes{
+            font-size: 1.1em;
+        }
+
+        .total-order-to-pay{
+            font-size: 1.3em;
+            margin-top: 10px;
+        }
+    }
+}
+
+.content-button-aceitar{
+    margin: 20px;
+
+    .btn-acepted{
+        margin-top: 50px;
+        border: none;
+        width: 100%;
+        padding: 15px 0;
+        font-size: 1.2em;
+        font-weight: bold;
+        background-color: #18C775;
+        color: #fff;
+        border-radius: 10px;
+    }
+}
