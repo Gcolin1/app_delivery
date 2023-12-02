@@ -2,13 +2,14 @@
 import { Outlet } from "react-router-dom"
 import { NavBar } from "./pages/components/NavBar"
 import { AuthProvider } from "./pages/auth/context/auth"
+import { PrivateRoutes } from "./PrivateRoutes"
 
 function App() {
   return (
-      <AuthProvider>
-        <Outlet />
-        <NavBar />
-      </AuthProvider>
+    <PrivateRoutes>
+      <Outlet />
+      <NavBar />
+    </PrivateRoutes>
   )
 }
 

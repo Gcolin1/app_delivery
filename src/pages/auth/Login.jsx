@@ -12,11 +12,12 @@ export const Login = () => {
 
     const handleSignIn = async (e) => {
         e.preventDefault()
-        const data ={
+        console.log(email)
+        console.log(password)
+        const data = {
             email,
             password
         }
-
         await signIn(data)
     }
 
