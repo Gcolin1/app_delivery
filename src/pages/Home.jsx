@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./style/Home.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faStar } from '@fortawesome/free-solid-svg-icons';
 import { TopBar } from './components/TopBar';
 
+
 function Home() {
   const [show, setShow] = useState(true)
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+      const storageUser = localStorage.getItem("@Auth:user")
+      setUser(JSON.parse(storageUser))
+  }, []);
 
   const showToggle = () => {
     if(show == true){
@@ -21,7 +28,7 @@ function Home() {
 
         <section className='info_entregador'>
             <div className='entregador_name'>
-                <p>Bem vindo Guilherme!</p>
+              <p>Bem vindo {user ? user.name : 'Usuário'}!</p>
             </div>
 
             <div className='rating_entregador'>
@@ -36,7 +43,7 @@ function Home() {
 
             <div className='wallet'> 
                 {
-                 show ? <p className='value_wallet' >R$50,00</p> : <p className='value_wallet' >R$ -------</p>
+                 show ? <p className='value_wallet' >{`R$ ${user ? user.wallet_balance : " "}`}</p> : <p className='value_wallet' >R$ -------</p>
                 }
 
                 <button onClick={showToggle}>
@@ -49,12 +56,12 @@ function Home() {
             <div className='info_routes'>
                 <div>
                   <h2>Em andamento</h2>
-                  <p>1</p>
+                  <p>{user ? user.onGoingCount : " "}</p>
                 </div>
 
                 <div>
                   <h2>Pedidos entregues</h2>
-                  <p>10</p>
+                  <p>{user ? user.completedCount : " "}</p>
                 </div>
             </div>
 

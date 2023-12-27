@@ -43,7 +43,7 @@ const router = createBrowserRouter([
   },
   
   {
-    path: "/order-details/:id",
+    path: "/order-details/:unique_order_id",
     element: <OrderDetails/>
   },
   {

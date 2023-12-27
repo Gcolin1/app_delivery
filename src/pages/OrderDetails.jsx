@@ -1,32 +1,61 @@
 import { faCartShopping, faChevronLeft, faClock, faLocation, faLocationDot, faPhone, faShare } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import './style/OrderDetails.scss'
+import { api } from '../services/api'
+import OrderDeliveryTimeCounter from './components/OrderDeliveryTimeCounter'
 
 
 export const OrderDetails = () => {
-  const { id } = useParams()
+  const { unique_order_id } = useParams()
+  const [order, setOrder] = useState([])
+  const location = useLocation();
+
+ const orderstatus_id = location.state && location.state.dados
+
+  
+
+  const getUniqueOrder = async () =>{
+    try{
+      const response = await api.post("/delivery/get-single-delivery-order", {
+       unique_order_id,
+       orderstatus_id
+    })
+
+      const data = response.data;
+      console.log(data)
+
+      setOrder(data)
+
+    }catch(error){
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getUniqueOrder();
+  }, [])
 
   return (
     <main className='container-page'>
         <div className='topBar'>
             <Link to={"/new_orders"} ><FontAwesomeIcon icon={faChevronLeft} className='icon' /></Link>
-            <p>Pedido: #{id}</p>
+            <p>Pedido: #{order.unique_order_id}</p>
         </div>
 
         <div className='order-values'>
             <div className='item1'>
-                <h4 className='price_orders'>Total taxa de entrega: R$2,99</h4>
+                <h4 className='price_orders'>Total taxa de entrega: R$ {order.commission}</h4>
             </div>
 
             <div className='total'>
-              <p className='total-to-pay'>Ganhos totais R$ 2,99 </p>
+              <p className='total-to-pay'>Ganhos totais R$ {order.commission} </p>
             </div>
         </div>
 
         <section className='container-route'>
-            <section className='top-container-route'><p><FontAwesomeIcon icon={faClock} className='icon' /> Pedido realizado: 2 minutes ago</p></section>
+            <section className='top-container-route'><p><FontAwesomeIcon icon={faClock} className='icon' />Pedido realizado:  <OrderDeliveryTimeCounter deliveryTimeFromApi={order.updated_at} className="time-order"/></p></section>
 
             <section className='content-time-line'>
                 <section className='time-line-route'>
@@ -35,8 +64,8 @@ export const OrderDetails = () => {
                             <FontAwesomeIcon icon={faCartShopping} className='icon' />
                         </div>
                         <div className='info-loja'>
-                            <h4>Burguer Food</h4>
-                            <p>Av 25 de Março</p>
+                            <h4>{order.restaurant?.name}</h4>
+                            <p>{order.restaurant?.address}</p>
                             <button className='button-map'> 
                                 <FontAwesomeIcon icon={faShare} className='icon-map' />
                                 Ver no mapa
@@ -48,10 +77,9 @@ export const OrderDetails = () => {
                             <FontAwesomeIcon icon={faLocationDot} className='icon' />
                         </div>
                         <div className='info-client'>
-                            <h4>Guilherme colin</h4>
-                            <p>11 99999-9999</p>
-                            <p>Rua nordestina 83, jardim lapena</p>
-                            <p>Referencia: Adegas fuk`s</p>
+                            <h4>{order.user?.name}</h4>
+                            <p>{order.user?.phone}</p>
+                            <p>{order.address}</p>
                             <div className='buttons'>
                                 <button className='button-map'> 
                                     <FontAwesomeIcon icon={faShare} className='icon-map' />
@@ -69,19 +97,25 @@ export const OrderDetails = () => {
             </section>
         </section>
 
+        
         <section className='content-total-order'>
-            <div className='value1'>
-                <div className='order-itens'>
-                    <h4>1x</h4>
-                    <p>X-Tudo</p>
-                </div>
-    
-                <span>R$34,50</span>
-            </div>
+            { order && order.orderitems && order.orderitems.length > 0 && order.orderitems.map(item => (
+                <>
+                    <div className='value1'>
+                    <div className='order-itens'>
+                        <h4>{item.quantity}x</h4>
+                        <p>{item.name}</p>
+                    </div>
+        
+                    <span>R$ {item.price }</span>
+                    </div>
+                </>
+            ))}
             <div className='value2'>
-                <p className='observacoes'>null/Dinheiro não precisa de troco</p>
-                <p className='total-order-to-pay'>Total: <span>R$39,50</span></p>
+                <p className='observacoes'>{order.order_comment}</p>
+                <p className='total-order-to-pay'>Total: <span>R$ {order.total}</span></p>
             </div>
+            
         </section>
 
         <div className='content-button-aceitar'>

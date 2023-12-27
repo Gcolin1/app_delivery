@@ -24,7 +24,6 @@ export const Login = () => {
     if(signed){
         return <Navigate to="/" />
     }else{
-
         return (  
             <main className='container-login'>
                 <div className='container-logo'>

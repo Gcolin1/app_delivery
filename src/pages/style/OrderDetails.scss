@@ -20,7 +20,7 @@
         color: #fff;
         font-weight: bold;
         margin-left: 25%;
-        font-size: 1.2em;
+        font-size: 1em;
     }
 }
 
@@ -57,7 +57,7 @@
         p{
             color: #18C775;
             font-weight: bold;
-            font-size: 1.3em;
+            font-size: 1em;
         }
     }
 
@@ -221,5 +221,16 @@
         background-color: #18C775;
         color: #fff;
         border-radius: 10px;
+    }
+}
+
+.top-container-route{
+    p{
+        display: flex;
+        justify-content: center;
+    }
+
+    .icon{
+        margin-right: 5px;
     }
 }

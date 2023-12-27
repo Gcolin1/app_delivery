@@ -1,5 +1,6 @@
 import { createContext, useState } from "react";
 import { api } from "../../../services/api";
+import { useEffect } from "react";
 
 
 
@@ -14,27 +15,37 @@ export const AuthProvider = ({ children }) => {
         const storageToken = localStorage.getItem("@Auth:token")
         
         if(storageToken && storageUser){
-            setUser(storageUser)
+            setUser(JSON.parse(storageUser))
+            api.defaults.headers.common['Authorization'] = `Bearer ${storageToken}`;
         }
-
-        loadingStoreData()
     }
 
-    const signIn = async (email, password) => {
-        const response  = await api.post("/login", {
+    useEffect(() => {
+        loadingStoreData();
+    }, []);
+
+    const signIn = async (data) => {
+        const email = data.email 
+        const password = data.password
+
+        const response  = await api.post("/delivery/login", {
             email,
             password,
         })
 
-        if(response.data.error){
+        console.log(response)
+
+        console.log(response.headers['content-type']);
+
+        if(response.data.success == false){
             alert(response.data.error)
         }else{
             setUser(response.data)
             api.defaults.headers.common[
                 "Authorization"
-            ] = `Bearer ${response.data.token}`
-            localStorage.setItem('@Auth:token', response.data.token);
-            localStorage.setItem('@Auth:user', response.data.user);
+            ] = `Bearer ${response.data.auth_token}`
+            localStorage.setItem('@Auth:token', response.data.data.auth_token);
+            localStorage.setItem('@Auth:user', JSON.stringify(response.data.data));
         }
     }
 
