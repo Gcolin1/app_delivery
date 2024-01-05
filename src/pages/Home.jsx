@@ -3,6 +3,7 @@ import "./style/Home.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faStar } from '@fortawesome/free-solid-svg-icons';
 import { TopBar } from './components/TopBar';
+import { FormatCashReal } from './components/FormatCashReal';
 
 
 function Home() {
@@ -43,7 +44,7 @@ function Home() {
 
             <div className='wallet'> 
                 {
-                 show ? <p className='value_wallet' >{`R$ ${user ? user.wallet_balance : " "}`}</p> : <p className='value_wallet' >R$ -------</p>
+                 show ? <p className='value_wallet' >{user?.wallet_balance && <FormatCashReal valor={user.wallet_balance} />}</p> : <p className='value_wallet' >R$ -------</p>
                 }
 
                 <button onClick={showToggle}>
