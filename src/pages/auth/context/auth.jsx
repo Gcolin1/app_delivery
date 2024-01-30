@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { api } from "../../../services/api";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -35,10 +36,8 @@ export const AuthProvider = ({ children }) => {
 
         console.log(response)
 
-        console.log(response.headers['content-type']);
-
         if(response.data.success == false){
-            alert(response.data.error)
+            alert("E-mail ou senha inválidos")
         }else{
             setUser(response.data)
             api.defaults.headers.common[
@@ -49,11 +48,17 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    const logout = () => {
+        localStorage.clear()
+        setUser(null)
+    }
+
     return(
         <AuthContext.Provider value={{
             user, 
             signed: !!user,
             signIn,
+            logout
         }}>
             {children}
         </AuthContext.Provider>

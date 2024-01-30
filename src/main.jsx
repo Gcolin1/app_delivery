@@ -16,6 +16,7 @@ import { Profile } from './pages/Profile.jsx'
 import { OrderDetails } from './pages/OrderDetails.jsx'
 import { Login } from './pages/auth/Login.jsx'
 import { AuthProvider } from './pages/auth/context/auth.jsx'
+import { Register } from './pages/auth/Register.jsx'
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: "/auth/login",
     element: <Login/>
+  },
+  {
+    path: "/auth/register",
+    element: <Register/>
   }
 ])
 

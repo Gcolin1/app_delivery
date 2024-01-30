@@ -15,7 +15,7 @@ export const OrderDetails = () => {
   const location = useLocation();
   const [removingLoader, setRemovingLoader] = useState(false)
 
-
+//pega dados do orderid pelo location state da pagina neworder
  const orderstatus_id = location.state && location.state.dados
 
  const navigate = useNavigate()

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './style/Profile.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
@@ -6,11 +6,21 @@ import { TopBar } from './components/TopBar'
 import { api } from '../services/api'
 import { Loading } from './components/Loading'
 import { FormatCashReal } from './components/FormatCashReal'
+import { AuthContext } from './auth/context/auth'
+import { useNavigate } from 'react-router-dom'
+import LogoutIcon from './../assets/logoutIcon.png'
+import ModalResgate from './components/ModalResgate'
 
 export const Profile = () => {
   const [info, setInfo] = useState({ data: {}, chart: { chartData: [] } });
+  const [openModal, setOpenModal] = useState(false)
   const [totalGanhosSemanais, setTotalGanhosSemanais] = useState(0);
   const [removingLoader, setRemovingLoader] = useState(false)
+  const { logout } = useContext(AuthContext)
+
+  const handleLogout = () =>{
+    logout()
+  }
 
 
   const getProfile = async () =>{
@@ -33,7 +43,7 @@ export const Profile = () => {
   const somaTotalGanhosSemanais = async () => {
     try {
       const total = info.chart?.chartData.reduce((acc, current) => acc + current.y, 0);
-      console.log(total);
+      //console.log(total);
       setTotalGanhosSemanais(total)
     } catch (error) {
       console.error('Erro ao calcular total de ganhos semanais:', error);
@@ -85,6 +95,15 @@ export const Profile = () => {
                 </div>
               </div>
             </section>
+
+            <section className='container_resgatar'>
+                <button onClick={() => setOpenModal(true)} className='btn_resgatar'>Solicitar pagamento</button>
+            </section>
+            <ModalResgate isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}/>
+
+            <div className='container_logout'>
+                <button onClick={handleLogout} className='btn_logout'><img src={LogoutIcon} alt="" /></button>
+            </div>
           </div>
         </>
       ) : (
