@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./style/Home.scss"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash, faStar } from '@fortawesome/free-solid-svg-icons';
 import { TopBar } from './components/TopBar';
 import { FormatCashReal } from './components/FormatCashReal';
 import { api } from '../services/api';
-import { AuthContext } from './auth/context/auth';
 import { Loading } from './components/Loading';
 
 
@@ -88,12 +87,12 @@ function Home() {
                 <div className='info_routes'>
                     <div>
                       <h2>Em andamento</h2>
-                      <p>{user ? user.onGoingCount : " "}</p>
+                      <p>{info ? info.data?.onGoingCount : " "}</p>
                     </div>
 
                     <div>
                       <h2>Pedidos entregues</h2>
-                      <p>{user ? user.completedCount : " "}</p>
+                      <p>{info ? info.data?.completedCount : " "}</p>
                     </div>
                 </div>
             </section>

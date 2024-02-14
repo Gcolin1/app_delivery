@@ -3,8 +3,12 @@
     padding: 0;
 }
 
+body{
+    background-color: #f8f8f8;
+}
+
 .topBar{
-    background-color: #05C6F1;
+    background-color: #70BF4B;
     width: 100%;
     display: flex;
     padding: 15px 20px;
@@ -27,7 +31,7 @@
 .order-values{
     margin: 20px 20px;
     padding: 10px 20px;
-    background-color: #F9F9F9;
+    background-color: #fff;
     border-radius: 10px;
     -webkit-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
     -moz-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
@@ -70,6 +74,7 @@
 
 .container-route{
     margin: 0 20px;
+    background-color: #fff;
     border-radius: 20px;
     -webkit-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
     -moz-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
@@ -88,7 +93,7 @@
     }
 
     .top-container-route{
-        background-color: #05C6F1;
+        background-color: #70BF4B;
         color: #fff;
         padding: 20px;
         text-align: center;
@@ -109,7 +114,7 @@
         .content-icon{
              width: 40px; 
              height: 40px;
-             background-color: #05C6F1;
+             background-color: #000;
              display: flex;
              justify-content: center;
              margin-right: 10px;
@@ -139,7 +144,7 @@
             font-weight: bold;
             border-radius: 5px;
             color: #fff;
-            background: linear-gradient(90deg, rgba(5,198,241,1) 30%, rgba(112,191,75,1) 73%);
+            background: #05C6F1;
 
             .icon-map{
                 color: #fff;
@@ -151,6 +156,7 @@
 
 .content-total-order{
     margin: 20px;
+    background-color: #fff;
     border-radius: 10px;
     padding: 0 20px;
     -webkit-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
@@ -218,7 +224,7 @@
         padding: 15px 0;
         font-size: 1.2em;
         font-weight: bold;
-        background-color: #18C775;
+        background-color: #70BF4B;
         color: #fff;
         border-radius: 10px;
     }
