@@ -10,7 +10,7 @@
     "theme_color": "#70bf4b",
     "icons": [
       {
-        "src": "/vite.svg",
+        "src": "/assets/logo-b.png",
         "type": "image/svg+xml"
       }
     ],
