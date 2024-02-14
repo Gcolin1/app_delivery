@@ -17,6 +17,7 @@ import { OrderDetails } from './pages/OrderDetails.jsx'
 import { Login } from './pages/auth/Login.jsx'
 import { AuthProvider } from './pages/auth/context/auth.jsx'
 import { Register } from './pages/auth/Register.jsx'
+import { PickedupOrders } from './pages/PickedupOrders.jsx'
 
 const router = createBrowserRouter([
   {
@@ -39,10 +40,13 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />
+      },
+      {
+        path: "/pickedup_orders",
+        element: <PickedupOrders />
       }
     ],
   },
-  
   {
     path: "/order-details/:unique_order_id",
     element: <OrderDetails/>

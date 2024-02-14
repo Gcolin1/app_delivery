@@ -40,7 +40,7 @@ function NewOrders () {
         <TopBar />
 
         {orders && orders.new_orders && orders.new_orders.length > 0 && orders.new_orders.map(item => (
-          <Link key={item.order_id} className='link' to={{ pathname:`/order-details/${item.unique_order_id}`, state: { dados : item.orderstatus_id } }} >
+          <Link to={`/order-details/${item.unique_order_id}`} state={{ dados: item.orderstatus_id, tela: 'new_orders' }}>
             <div className='new_order_container'>
               <div className='item1'>
               <OrderDeliveryTimeCounter deliveryTimeFromApi={item.updated_at}/>

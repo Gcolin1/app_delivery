@@ -7,16 +7,20 @@ import { api } from '../services/api'
 import OrderDeliveryTimeCounter from './components/OrderDeliveryTimeCounter'
 import { FormatCashReal } from './components/FormatCashReal'
 import { Loading } from './components/Loading'
+import './style/PickedupOrders.scss'
 
 
-export const OrderDetails = () => {
+export const OrderDetails = (props) => {
   const { unique_order_id } = useParams()
   const [order, setOrder] = useState([])
   const location = useLocation();
   const [removingLoader, setRemovingLoader] = useState(false)
+  const [inRoute, setInRoute] = useState(false)
+  const [pin, setPin] = useState("")
 
 //pega dados do orderid pelo location state da pagina neworder
  const orderstatus_id = location.state && location.state.dados
+ const inRouteState = location.state.tela
 
  const navigate = useNavigate()
 
@@ -25,7 +29,18 @@ export const OrderDetails = () => {
     navigate(-1)
   };
 
-  
+ const FinalizarEntrega = () =>{
+    if (order) {
+        const orderPin = order?.delivery_pin; 
+        if (pin == orderPin) {
+          console.log("PIN válido");
+          // Faça o que precisar quando o PIN for válido
+        } else {
+          console.log("PIN inválido");
+          // Faça o que precisar quando o PIN for inválido
+        }
+      }
+  }
 
   const getUniqueOrder = async () =>{
     try{
@@ -50,6 +65,11 @@ export const OrderDetails = () => {
 
   useEffect(() => {
     getUniqueOrder();
+    if(inRouteState === true){
+        setInRoute(true)
+    }else{
+        setInRoute(false)
+    }
   }, [])
 
   return (
@@ -135,8 +155,22 @@ export const OrderDetails = () => {
                     
                 </section>
 
+                { inRoute ? 
+                    <div className='container_total_delivery'>
+                        <div className='container_total_order'>
+                            <p>Valor do pedido: <span>{order?.total && <FormatCashReal valor={order.total} />}</span></p>
+                        </div>
+
+                        <div className='container_delivery_pin'>
+                            <form onSubmit={FinalizarEntrega}><input type="number" className='inp_delivery_pin' placeholder='Código de entrega' value={pin} onChange={(e) => setPin(e.target.value)}/></form>
+                        </div>
+                    </div>
+                    :
+                    ""
+                }
+
                 <div className='content-button-aceitar'>
-                    <button className='btn-acepted'>Aceitar</button>
+                    <button onClick={FinalizarEntrega} className='btn-acepted'>Aceitar</button>
                 </div>
             </>
         ): (

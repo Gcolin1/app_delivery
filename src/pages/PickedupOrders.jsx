@@ -7,10 +7,10 @@ import { Loading } from './components/Loading'
 import { Link } from 'react-router-dom'
 import OrderDeliveryTimeCounter from './components/OrderDeliveryTimeCounter'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot, faMinus, faSquarePlus, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faMinus, faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 
 
-export const OrdersAccepted = () => {
+export const PickedupOrders = () => {
   const [orders, setOrders] = useState([])
   const [show, setShow] = useState([])
   const [removingLoader, setRemovingLoader] = useState(false)
@@ -47,14 +47,14 @@ export const OrdersAccepted = () => {
         <TopBar />
 
         <div>
-        {orders && orders.accepted_orders && orders.accepted_orders.length > 0 && orders.accepted_orders.map((item, index) => (
+        {orders && orders.pickedup_orders && orders.pickedup_orders.length > 0 && orders.pickedup_orders.map((item, index) => (
             <div className='orders_accepted_container'>
               <div className='cabeçalho'>
                 <OrderDeliveryTimeCounter deliveryTimeFromApi={item.updated_at}/>
                 <p className='id_order'>#{item.unique_order_id}</p> 
               </div>
 
-              <Link to={`/order-details/${item.unique_order_id}`} state={{ dados: item.orderstatus_id, tela: 'aceitar' }}>
+              <Link to={`/order-details/${item.unique_order_id}`} state={{ dados: item.orderstatus_id, tela: true }}>
                 <div className='info-order'>
                   <div className='info_loja'>
                     <p className='loja_name'><span>Loja:  </span>{item.restaurant.name}</p>
@@ -81,14 +81,12 @@ export const OrdersAccepted = () => {
                 <button onClick={() => showToggle(index)} className='btn-descricao-entrega'>Informações da entrega{!show[index] ? <FontAwesomeIcon icon={faSquarePlus} className='icon'/> : <FontAwesomeIcon icon={faMinus} className='icon'/>}</button>
               </div>
             </div>
-        ))}{
-            orders.accepted_orders > 0  && 'posts'
-          }
+        ))}
           {
-            orders.accepted_orders <= 0 && 
+            orders.pickedup_orders <= 0 && 
             <div className='orderAccepted_empty_container'>
               <img src={OrderImg} alt="" />
-              <p>Nenhum pedido aceito!</p>
+              <p>Nenhum pedido em rota!</p>
             </div>
           }
           {

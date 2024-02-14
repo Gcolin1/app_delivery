@@ -10,15 +10,22 @@ import { Loading } from './components/Loading';
 
 
 function Home() {
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(null)
   const [user, setUser] = useState(null)
   const [info, setInfo] = useState({ data: {}, chart: { chartData: [] } });
   const [removingLoader, setRemovingLoader] = useState(false)
-  const { signed } = useContext(AuthContext)
 
   useEffect(() => {
       const storageUser = localStorage.getItem("@Auth:user")
       setUser(JSON.parse(storageUser))
+
+      getProfile();
+
+    const savedShowState = localStorage.getItem('show')
+
+    if(savedShowState !== null){
+      setShow(savedShowState === 'true')
+    }
   }, []);
 
   const getProfile = async () =>{
@@ -38,16 +45,11 @@ function Home() {
     }
   }
 
-  useEffect(() => {
-    getProfile();
-  }, [])
-
   const showToggle = () => {
-    if(show == true){
-      setShow(false)
-    }else{
-      setShow(true)
-    }
+    const updatedShow = !show;
+    setShow(updatedShow);
+
+    localStorage.setItem('show', updatedShow.toString())
   }
   
   return (
@@ -73,7 +75,7 @@ function Home() {
 
                 <div className='wallet'> 
                     {
-                    show ? <p className='value_wallet' >{info && info.data && info.data.wallet_balance  ? <FormatCashReal valor={info.data?.wallet_balance} /> : ''}</p> : <p className='value_wallet' >R$ -------</p>
+                    show ? <p className='value_wallet' >{info && info.data && info.data.wallet_balance  ? <FormatCashReal valor={info.data?.wallet_balance} /> : 'R$ 0,00'}</p> : <p className='value_wallet' >R$ -------</p>
                     }
 
                     <button onClick={showToggle}>

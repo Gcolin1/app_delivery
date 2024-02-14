@@ -1,0 +1,30 @@
+.container_total_delivery{
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+
+    .container_total_order{
+        color: #4E4E4E;
+        font-weight: bold;
+        font-size: 1.3em;
+        border: dotted #05C6F1 3px;
+        border-radius: 10px;
+        padding: 20px 0;
+    }
+
+    .container_delivery_pin{
+        margin-top: 20px;
+
+        .inp_delivery_pin{
+            width: 100%;
+            border: none;
+            background-color: #F1F1F1;
+            text-align: center;
+            font-size: 1.3em;
+            padding: 10px 0;
+            -webkit-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
+            -moz-box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
+            box-shadow: 0px 5px 9px -3px rgba(66, 68, 90, 1);
+        }
+    }
+}
