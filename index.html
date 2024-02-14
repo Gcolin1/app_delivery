@@ -6,6 +6,11 @@
     <link rel="manifest" href="/manifest.json"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Brasuca entregador</title>
+    <script>
+        if(typeof navigator.serviceWorker !== 'undefined'){
+          navigator.serviceWorker.register('pwabuilder-sw.j')
+        }
+    </script>
   </head>
   <body>
     <div id="root"></div>
