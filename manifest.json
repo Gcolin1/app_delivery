@@ -11,7 +11,7 @@
     "icons": [
       {
         "src": "/assets/logo-b.png",
-        "type": "image/svg+xml"
+        "type": "image/png"
       }
     ],
     "description": "aplicativo do entregador para o aplicativo brasuca",
