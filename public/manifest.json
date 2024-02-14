@@ -1,0 +1,19 @@
+{
+    "background_color": "#f9f9f9",
+    "dir": "ltr",
+    "display": "standalone",
+    "name": "brasuca entregador",
+    "orientation": "portrait",
+    "scope": "/",
+    "short_name": "brasuca",
+    "start_url": "/",
+    "theme_color": "#70bf4b",
+    "icons": [
+      {
+        "src": "/vite.svg",
+        "type": "image/svg+xml"
+      }
+    ],
+    "description": "aplicativo do entregador para o aplicativo brasuca",
+    "lang": "pt"
+  }
