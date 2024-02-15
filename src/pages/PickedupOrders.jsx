@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { TopBar } from './components/TopBar'
 import { api } from '../services/api'
 import  "./style/OrdersAccepted.scss"
-import OrderImg from '../assets/orderImg.png'
+import Map from '../assets/mapa.png'
 import { Loading } from './components/Loading'
 import { Link } from 'react-router-dom'
 import OrderDeliveryTimeCounter from './components/OrderDeliveryTimeCounter'
@@ -90,7 +90,7 @@ export const PickedupOrders = () => {
           {
             orders.pickedup_orders <= 0 && 
             <div className='orderAccepted_empty_container'>
-              <img src={OrderImg} alt="" />
+              <img src={Map} alt="" />
               <p>Nenhum pedido em rota!</p>
             </div>
           }
