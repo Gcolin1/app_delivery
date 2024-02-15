@@ -20,7 +20,6 @@
         const installAlert = document.createElement('div');
         installAlert.style.position = 'fixed';
         installAlert.style.top = '10px';
-        installAlert.style.left = '10%';
         installAlert.style.width = '90%';
         installAlert.style.transform = 'translateX(-50%)';
         installAlert.style.backgroundColor = '#f0f0f0';
@@ -29,7 +28,7 @@
         installAlert.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
         installAlert.innerHTML = `
           <span>Deseja instalar o aplicativo?</span>
-          <button id="install-button style="background-color: #70BF4B; color: #fff; border: none; border-radius: 5px; padding: 8px 10px; margin-right: 10px; cursor: pointer;"">Sim</button>
+          <button id="install-button style="background-color: #70BF4B; color: #fff; border: none; border-radius: 5px; padding: 8px 10px; margin-right: 10px; cursor: pointer;">Sim</button>
           <button id="cancel-button" style="background-color: #70BF4B; color: #fff; border: none; border-radius: 5px; padding: 8px 10px; cursor: pointer;">Cancelar</button>
         `;
         document.body.appendChild(installAlert);
