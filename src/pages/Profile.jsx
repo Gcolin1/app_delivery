@@ -43,7 +43,7 @@ export const Profile = () => {
   const somaTotalGanhosSemanais = async () => {
     try {
       const total = info.chart?.chartData.reduce((acc, current) => acc + current.y, 0);
-      //console.log(total);
+      console.log(total);
       setTotalGanhosSemanais(total)
     } catch (error) {
       console.error('Erro ao calcular total de ganhos semanais:', error);
