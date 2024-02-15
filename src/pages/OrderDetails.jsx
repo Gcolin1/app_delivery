@@ -43,6 +43,12 @@ export const OrderDetails = (props) => {
   }
 
   const getUniqueOrder = async () =>{
+    const token = localStorage.getItem('@Auth:token');
+
+    if (token) {
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
     try{
       const response = await api.post("/delivery/get-single-delivery-order", {
        unique_order_id,
@@ -71,12 +77,6 @@ export const OrderDetails = (props) => {
         setInRoute(false)
     }
 
-    const token = localStorage.getItem('@Auth:token');
-
-    if (token) {
-        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    }
-    
   }, [])
 
   return (
