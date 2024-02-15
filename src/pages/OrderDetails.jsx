@@ -16,11 +16,17 @@ export const OrderDetails = (props) => {
   const location = useLocation();
   const [removingLoader, setRemovingLoader] = useState(false)
   const [inRoute, setInRoute] = useState(false)
+  const [newOrder, setNewOrder] = useState(false)
+  const [accepted, setAccepted] = useState(false)
   const [pin, setPin] = useState("")
 
 //pega dados do orderid pelo location state da pagina neworder
  const orderstatus_id = location.state && location.state.dados
- const inRouteState = location.state.tela
+ const inRouteState = location.state.inRoute
+ const acceptedState = location.state.accepted
+ const newOrderState = location.state.newOrder
+ const token = localStorage.getItem('@Auth:token');
+ const order_id = order.id
 
  const navigate = useNavigate()
 
@@ -29,16 +35,88 @@ export const OrderDetails = (props) => {
     navigate(-1)
   };
 
- const FinalizarEntrega = () =>{
-    if (order) {
+ const FinalizarEntrega = async () =>{
+    if (order && inRoute) {
         const orderPin = order?.delivery_pin; 
         if (pin == orderPin) {
-          console.log("PIN válido");
-          // Faça o que precisar quando o PIN for válido
+            const order_id = order.id
+            const delivery_pin = pin.toString()
+            setRemovingLoader(false)
+
+            try{
+                const response = await api.post("/delivery/deliver-order", {
+                 token,
+                 order_id,
+                 delivery_pin
+              })
+          
+                const data = response.data;
+                console.log(data)
+     
+                if(response.status == 200){
+                    setRemovingLoader(true)
+                    alert("Pedido entregue com sucesso")
+                    
+                    setTimeout(() => {
+                        navigate(-1);
+                    }, 500)
+                }
+          
+              }catch(error){
+                console.log(error)
+              }
         } else {
           console.log("PIN inválido");
           // Faça o que precisar quando o PIN for inválido
         }
+      }else if(accepted){
+        setRemovingLoader(false)
+
+        try{
+            const response = await api.post("/delivery/pickedup-order", {
+             token,
+             order_id,
+          })
+      
+            const data = response.data;
+            console.log(data)
+ 
+            if(response.status == 200){
+                setRemovingLoader(true)
+                alert("Pedido enviado")
+                setInRoute(true)
+                setAccepted(false)
+                setNewOrder(false)
+            }
+      
+          }catch(error){
+            console.log(error)
+          }
+      }else if(newOrder){
+        const delivery_guy_id = order.user_id
+        setRemovingLoader(false)
+
+        try{
+            const response = await api.post("/delivery/accept-to-deliver", {
+             token,
+             delivery_guy_id,
+             order_id,
+          })
+
+            const data = response.data;
+            console.log(data)
+ 
+            if(response.status == 200){
+                setRemovingLoader(true)
+                alert("Pedido Aceito")
+                setInRoute(false)
+                setAccepted(true)
+                setNewOrder(false)
+            }
+      
+          }catch(error){
+            console.log(error)
+          }
       }
   }
 
@@ -71,11 +149,20 @@ export const OrderDetails = (props) => {
 
   useEffect(() => {
     getUniqueOrder();
+
     if(inRouteState === true){
         setInRoute(true)
+    }else if(acceptedState === true){
+        setAccepted(true)
+    }else if(newOrderState === true){
+        setNewOrder(true)
     }else{
+        setAccepted(false)
+        setNewOrder(false)
         setInRoute(false)
     }
+
+    console.log(location.state)
 
   }, [])
 
@@ -177,7 +264,9 @@ export const OrderDetails = (props) => {
                 }
 
                 <div className='content-button-aceitar'>
-                    <button onClick={FinalizarEntrega} className='btn-acepted'>Aceitar</button>
+                    <button onClick={FinalizarEntrega} className='btn-acepted'>{
+                       newOrder ? "Aceitar" : (accepted ? "Retirar" : "Finalizar entrega")
+                    }</button>
                 </div>
             </>
         ): (

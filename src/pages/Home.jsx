@@ -87,12 +87,12 @@ function Home() {
                 <div className='info_routes'>
                     <div>
                       <h2>Em andamento</h2>
-                      <p>{user ? user.onGoingCount : " "}</p>
+                      <p>{info ? info.data?.onGoingCount : " "}</p>
                     </div>
 
                     <div>
                       <h2>Pedidos entregues</h2>
-                      <p>{user ? user.completedCount : " "}</p>
+                      <p>{info ? info.data?.completedCount : " "}</p>
                     </div>
                 </div>
             </section>

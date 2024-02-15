@@ -54,7 +54,12 @@ export const PickedupOrders = () => {
                 <p className='id_order'>#{item.unique_order_id}</p> 
               </div>
 
-              <Link to={`/order-details/${item.unique_order_id}`} state={{ dados: item.orderstatus_id, tela: true }}>
+              <Link to={`/order-details/${item.unique_order_id}`} state={{ 
+                dados: item.orderstatus_id, 
+                newOrder: false, 
+                accepted: false,
+                inRoute: true,
+              }}>
                 <div className='info-order'>
                   <div className='info_loja'>
                     <p className='loja_name'><span>Loja:  </span>{item.restaurant.name}</p>
