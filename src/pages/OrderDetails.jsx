@@ -70,6 +70,13 @@ export const OrderDetails = (props) => {
     }else{
         setInRoute(false)
     }
+
+    const token = localStorage.getItem('@Auth:token');
+
+    if (token) {
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+    
   }, [])
 
   return (
