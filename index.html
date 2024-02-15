@@ -19,17 +19,18 @@
         event.preventDefault(); // Prevenindo que o prompt de instalação padrão seja mostrado
         const installAlert = document.createElement('div');
         installAlert.style.position = 'fixed';
-        installAlert.style.bottom = '10px';
-        installAlert.style.left = '50%';
+        installAlert.style.top = '10px';
+        installAlert.style.left = '10%';
+        installAlert.style.width = '90%';
         installAlert.style.transform = 'translateX(-50%)';
         installAlert.style.backgroundColor = '#f0f0f0';
         installAlert.style.padding = '10px';
         installAlert.style.borderRadius = '5px';
         installAlert.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
         installAlert.innerHTML = `
-          <span>Instalar PWA?</span>
-          <button id="install-button">Sim</button>
-          <button id="cancel-button">Cancelar</button>
+          <span>Deseja instalar o aplicativo?</span>
+          <button id="install-button style="background-color: #70BF4B; color: #fff; border: none; border-radius: 5px; padding: 8px 10px; margin-right: 10px; cursor: pointer;"">Sim</button>
+          <button id="cancel-button" style="background-color: #70BF4B; color: #fff; border: none; border-radius: 5px; padding: 8px 10px; cursor: pointer;">Cancelar</button>
         `;
         document.body.appendChild(installAlert);
   
