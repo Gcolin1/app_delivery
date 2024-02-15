@@ -5,7 +5,6 @@ import { faEye, faEyeSlash, faStar } from '@fortawesome/free-solid-svg-icons';
 import { TopBar } from './components/TopBar';
 import { FormatCashReal } from './components/FormatCashReal';
 import { api } from '../services/api';
-import { AuthContext } from './auth/context/auth';
 import { Loading } from './components/Loading';
 
 
