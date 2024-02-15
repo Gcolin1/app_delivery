@@ -13,6 +13,29 @@
     </script>
   </head>
   <body>
+    <button id="install-button">Instalar PWA</button>
+
+  <script>
+    // Se a PWA é suportada e o usuário ainda não instalou, mostra o botão de instalação
+    window.addEventListener('beforeinstallprompt', (event) => {
+      event.preventDefault(); // Prevenindo que o prompt de instalação padrão seja mostrado
+      const installButton = document.getElementById('install-button');
+      installButton.style.display = 'block'; // Mostra o botão de instalação
+      installButton.addEventListener('click', () => {
+        event.prompt(); // Mostra o prompt de instalação personalizado
+        event.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('O usuário aceitou instalar a PWA');
+          } else {
+            console.log('O usuário recusou instalar a PWA');
+          }
+          installButton.style.display = 'none'; // Esconde o botão de instalação após a instalação
+        });
+      });
+    });
+  </script>
+
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
