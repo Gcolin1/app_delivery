@@ -13,27 +13,45 @@
     </script>
   </head>
   <body>
-    <button id="install-button">Instalar PWA</button>
-
-  <script>
-    // Se a PWA é suportada e o usuário ainda não instalou, mostra o botão de instalação
-    window.addEventListener('beforeinstallprompt', (event) => {
-      event.preventDefault(); // Prevenindo que o prompt de instalação padrão seja mostrado
-      const installButton = document.getElementById('install-button');
-      installButton.style.display = 'block'; // Mostra o botão de instalação
-      installButton.addEventListener('click', () => {
-        event.prompt(); // Mostra o prompt de instalação personalizado
-        event.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === 'accepted') {
-            console.log('O usuário aceitou instalar a PWA');
-          } else {
-            console.log('O usuário recusou instalar a PWA');
-          }
-          installButton.style.display = 'none'; // Esconde o botão de instalação após a instalação
+    <script>
+      // Se a PWA é suportada e o usuário ainda não instalou, mostra o alerta personalizado
+      window.addEventListener('beforeinstallprompt', (event) => {
+        event.preventDefault(); // Prevenindo que o prompt de instalação padrão seja mostrado
+        const installAlert = document.createElement('div');
+        installAlert.style.position = 'fixed';
+        installAlert.style.bottom = '10px';
+        installAlert.style.left = '50%';
+        installAlert.style.transform = 'translateX(-50%)';
+        installAlert.style.backgroundColor = '#f0f0f0';
+        installAlert.style.padding = '10px';
+        installAlert.style.borderRadius = '5px';
+        installAlert.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
+        installAlert.innerHTML = `
+          <span>Instalar PWA?</span>
+          <button id="install-button">Sim</button>
+          <button id="cancel-button">Cancelar</button>
+        `;
+        document.body.appendChild(installAlert);
+  
+        const installButton = document.getElementById('install-button');
+        installButton.addEventListener('click', () => {
+          event.prompt(); // Mostra o prompt de instalação personalizado
+          event.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+              console.log('O usuário aceitou instalar a PWA');
+            } else {
+              console.log('O usuário recusou instalar a PWA');
+            }
+            document.body.removeChild(installAlert); // Remove o alerta após a instalação
+          });
+        });
+  
+        const cancelButton = document.getElementById('cancel-button');
+        cancelButton.addEventListener('click', () => {
+          document.body.removeChild(installAlert); // Remove o alerta se o usuário cancelar
         });
       });
-    });
-  </script>
+    </script>
 
 
     <div id="root"></div>
