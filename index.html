@@ -18,8 +18,8 @@
   // Verifica se a PWA está instalada no Safari
   const isSafariPWAInstalled = window.navigator.standalone;
 
-  if (!isSafariPWAInstalled && window.matchMedia('(display-mode: standalone)').matches) {
-    // Se a PWA é suportada no navegador e o usuário ainda não instalou, mostra o alerta personalizado
+  // Verifica se o navegador suporta PWAs e o evento beforeinstallprompt
+  if (window.matchMedia('(display-mode: standalone)').matches && !isSafariPWAInstalled) {
     window.addEventListener('beforeinstallprompt', (event) => {
       event.preventDefault(); // Prevenindo que o prompt de instalação padrão seja mostrado
       const installAlert = document.createElement('div');
