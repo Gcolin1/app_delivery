@@ -20,7 +20,7 @@ export const TopBar = () => {
 
   const CustomAlert = () => (
     <div className="custom-alert">
-      <p>Clique no botão para alterar o status para {dis ? 'Disponivel' : 'Indisponivel'} para entrega.</p>
+      <p>Clique no botão para alterar o status para {dis ? 'Indisponivel' : 'Disponivel'} para entrega.</p>
       <button className='btn_alert' onClick={() => setShowAlert(false)}>Fechar</button>
     </div>
   );
