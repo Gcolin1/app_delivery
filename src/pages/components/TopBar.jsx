@@ -6,7 +6,7 @@ import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 export const TopBar = () => {
   const [dis, setDisponivel] = useState(false);
-  const [buttonColor, setButtonColor] = useState('#18C775');
+  const [buttonColor, setButtonColor] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
   const toggleDisponivel = () => {
