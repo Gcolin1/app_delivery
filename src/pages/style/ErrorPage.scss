@@ -4,17 +4,40 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
 
     h1{
-        color: #939393;
+        color: #545454;
         font-weight: bold;
         font-size: 3em;
+        
+        span{
+            font-size: 0.5em;
+        }
+    }
+
+    p{
+        width: 90%;
+        text-align: center;
+        color: #000;
+        font-weight: bold;
+        margin-bottom: 50px;
     }
 
     img{
-        position: absolute;
         margin-bottom: 30px;
         bottom: 0;
+    }
+
+    .button_return{
+        background-color: #05C6F1;
+        color: #fff;
+        padding: 10px 20px;
+        margin-bottom: 50px;
+        font-weight: bold;
+        border-radius: 10px;
+    }
+
+    .logo_error{
+        position: absolute;
     }
 }

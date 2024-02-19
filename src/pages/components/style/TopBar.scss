@@ -43,3 +43,23 @@
         }
     }
 }
+
+.custom-alert{
+    background-color: #ffffff;
+    padding: 20px;
+
+    p{
+        font-weight: 600;
+        color: #4e4e4e;
+    }
+
+    .btn_alert{
+        margin-top: 10px;
+        padding: 5px 10px;
+        border: none;
+        background-color: #05C6F1;
+        color: #fff;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+}
