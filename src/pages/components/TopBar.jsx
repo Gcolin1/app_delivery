@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Logo from "./../../assets/logo.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import "./style/TopBar.scss";
-import { faMotorcycle, faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { faQuestion } from '@fortawesome/free-solid-svg-icons';
 
 export const TopBar = () => {
   const [dis, setDisponivel] = useState(false);
