@@ -87,27 +87,10 @@
 
 }
 
-@media(max-width: 380px) {
-    .links-cad{
-        flex-direction: column;
-        
-        p{
-            margin: 5px 0;
-        }
-    }
-}
 
 @media(min-height: 800px) {
     .container-login{
         height: 100vh;
-    }
-
-    .links-cad{
-        flex-direction: column;
-        
-        p{
-            margin: 5px 0;
-        }
     }
 
     .content-inputs-register{
