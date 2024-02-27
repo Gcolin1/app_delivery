@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './style/Profile.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { faClockRotateLeft, faDollarSign, faStar } from '@fortawesome/free-solid-svg-icons'
 import { TopBar } from './components/TopBar'
 import { api } from '../services/api'
 import { Loading } from './components/Loading'
@@ -93,12 +93,23 @@ export const Profile = () => {
                     </div>
                   </div>
                 </div>
+
+                
               </div>
             </section>
 
-            <section className='container_resgatar'>
-                <button onClick={() => setOpenModal(true)} className='btn_resgatar'>Solicitar pagamento</button>
-            </section>
+            <div className='buttons-functions'>
+                <div className='container_button'>
+                  <button onClick={() => setOpenModal(true)} className='btn_resgatar'><FontAwesomeIcon icon={faDollarSign} className='icon'/></button>
+                  <p>Solicitar pagamento</p>
+                </div>
+
+                <div className='container_button'>
+                  <button className='btn_resgatar'><FontAwesomeIcon icon={faClockRotateLeft} className='icon'/></button>
+                  <p>historico de entregas</p>
+                </div>
+              </div>
+
             <ModalResgate isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}/>
 
             <div className='container_logout'>

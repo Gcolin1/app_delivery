@@ -1,8 +1,8 @@
 .container-login{
     background-color: #70BF4B;
     width: 100%;
-    height: 90vh;
     overflow-y: hidden;
+   
 
     .container-logo{
         text-align: center;
@@ -23,13 +23,13 @@
 
     .content-inputs{
         display: flex;
+        margin-top: 40%;
         flex-direction: column;
         align-items: center;
         border-radius: 50px 50px 0 0;
         background-color: #ffffff;
         width: 100%;
-        position: absolute;
-        bottom: 0;
+        
         padding: 40px 20px;
         -webkit-box-shadow: 1px -9px 20px -5px rgba(66, 68, 90, 1);
         -moz-box-shadow: 1px -9px 20px -5px rgba(66, 68, 90, 1);
@@ -95,4 +95,34 @@
 
     
 
+}
+
+@media(max-width: 380px) {
+    .links-cad{
+        flex-direction: column;
+        
+        p{
+            margin: 5px 0;
+        }
+    }
+}
+
+@media(min-height: 800px) {
+    .container-login{
+        height: 100vh;
+    }
+
+    .links-cad{
+        flex-direction: column;
+        
+        p{
+            margin: 5px 0;
+        }
+    }
+
+    .content-inputs{
+        position: absolute;
+        bottom: 0;
+        background-color: #e05353;
+    }
 }
