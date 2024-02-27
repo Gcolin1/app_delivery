@@ -33,6 +33,7 @@ export const Profile = () => {
 
       if(data){
         setRemovingLoader(true)
+        somaTotalGanhosSemanais(data.chart.chartData)
       }
 
     }catch(error){
@@ -40,9 +41,9 @@ export const Profile = () => {
     }
   }
 
-  const somaTotalGanhosSemanais = async () => {
+  const somaTotalGanhosSemanais = (value) => {
     try {
-      const total = info.chart?.chartData.reduce((acc, current) => acc + current.y, 0);
+      const total = value.reduce((acc, current) => acc + current.y, 0);
       console.log(total);
       setTotalGanhosSemanais(total)
     } catch (error) {
@@ -54,7 +55,6 @@ export const Profile = () => {
 
   useEffect(() => {
     getProfile();
-    somaTotalGanhosSemanais()
   }, [])
 
 
