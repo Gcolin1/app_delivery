@@ -7,7 +7,7 @@ import { api } from '../services/api'
 import { Loading } from './components/Loading'
 import { FormatCashReal } from './components/FormatCashReal'
 import { AuthContext } from './auth/context/auth'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import LogoutIcon from './../assets/logoutIcon.png'
 import ModalResgate from './components/ModalResgate'
 
@@ -104,10 +104,12 @@ export const Profile = () => {
                   <p>Solicitar pagamento</p>
                 </div>
 
-                <div className='container_button'>
-                  <button className='btn_resgatar'><FontAwesomeIcon icon={faClockRotateLeft} className='icon'/></button>
-                  <p>historico de entregas</p>
-                </div>
+                <Link to="/completed-orders" style={{ color: "#000" }}>
+                  <div className='container_button'>
+                    <button className='btn_resgatar'><FontAwesomeIcon icon={faClockRotateLeft} className='icon'/></button>
+                    <p>historico de entregas</p>
+                  </div>
+                </Link>
               </div>
 
             <ModalResgate isOpen={openModal} setModalOpen={() => setOpenModal(!openModal)}/>

@@ -18,6 +18,7 @@ import { Login } from './pages/auth/Login.jsx'
 import { AuthProvider } from './pages/auth/context/auth.jsx'
 import { Register } from './pages/auth/Register.jsx'
 import { PickedupOrders } from './pages/PickedupOrders.jsx'
+import CompletedOrders from './pages/CompletedOrders.jsx'
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: "/order-details/:unique_order_id",
     element: <OrderDetails/>
+  },
+  {
+    path: "/completed-orders",
+    element: <CompletedOrders/>
   },
   {
     path: "/auth/login",
