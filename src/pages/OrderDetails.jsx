@@ -146,6 +146,7 @@ export const OrderDetails = (props) => {
       console.log(error)
     }
   }
+  
 
   useEffect(() => {
     getUniqueOrder();
@@ -165,6 +166,16 @@ export const OrderDetails = (props) => {
     console.log(location.state)
 
   }, [])
+
+  const AbrirMapaLoja = (latitude, longitude) => {
+    window.open(`https://www.google.com/maps/search/?api=1&query=${latitude},${longitude}`, '_blank');
+  };
+
+  const AbrirMapaCliente = (location) => {
+    const jsonLocation = JSON.parse(location)
+    window.open(`https://www.google.com/maps/search/?api=1&query=${jsonLocation.lat},${jsonLocation.lng}`, '_blank');
+    console.log(jsonLocation)
+  };
 
   return (
     <main className='container-page'>
@@ -197,7 +208,7 @@ export const OrderDetails = (props) => {
                                 <div className='info-loja'>
                                     <h4>{order.restaurant?.name}</h4>
                                     <p>{order.restaurant?.address}</p>
-                                    <button className='button-map'> 
+                                    <button className='button-map' onClick={() => AbrirMapaLoja(order.restaurant?.latitude, order.restaurant?.longitude)}> 
                                         <FontAwesomeIcon icon={faShare} className='icon-map' />
                                         Ver no mapa
                                     </button>
@@ -212,12 +223,12 @@ export const OrderDetails = (props) => {
                                     <p>{order.user?.phone}</p>
                                     <p>{order.address}</p>
                                     <div className='buttons'>
-                                        <button className='button-map'> 
+                                        <button className='button-map' onClick={() => AbrirMapaCliente(order.location)}> 
                                             <FontAwesomeIcon icon={faShare} className='icon-map' />
                                             Ver no mapa
                                         </button>
 
-                                        <button className='button-phone'> 
+                                        <button className='button-phone' onClick={() => window.location.href = `tel:${order.user?.phone}`}> 
                                             <FontAwesomeIcon icon={faPhone} className='icon-map' />
                                             Ligar agora
                                         </button>
