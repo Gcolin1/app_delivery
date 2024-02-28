@@ -20,6 +20,12 @@ function CompletedOrders () {
   };
 
   const getCompletedOrders = async () =>{
+    const token = localStorage.getItem('@Auth:token');
+
+    if (token) {
+        api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    }
+
     try{
       const response = await api.post("/delivery/get-completed-orders")
 
