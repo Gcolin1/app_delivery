@@ -47,6 +47,7 @@ export const TopBar = () => {
       console.log(error);
     } finally {
       setLoading(false); // Define o estado de loading como false após a requisição
+      window.location.reload()
     }
   };
 

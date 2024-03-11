@@ -34,6 +34,9 @@ function Home() {
       const data = response.data;
       console.log(data)
       setInfo(data)
+      const status = data.data.status
+      console.log(status)
+      localStorage.setItem('status', status === 1 ? 'true' : 'false');
 
       if(data){
         setRemovingLoader(true)
