@@ -75,10 +75,10 @@ export const Profile = () => {
                     <h2>Saldo</h2>
                     <p><FormatCashReal valor={info.data?.wallet_balance}/></p>
                   </div>
-                  <div className='retirado'>
+                  {/* <div className='retirado'>
                     <h2>Retirado</h2>
                     <p>R$ 450,00</p>
-                  </div>
+                  </div> */}
                 </div>
                 <div className='info-rating'>
                   <div className='pay-week'>
@@ -99,10 +99,12 @@ export const Profile = () => {
             </section>
 
             <div className='buttons-functions'>
-                <div className='container_button'>
+                {/* 
+                  <div className='container_button'>
                   <button onClick={() => setOpenModal(true)} className='btn_resgatar'><FontAwesomeIcon icon={faDollarSign} className='icon'/></button>
                   <p>Solicitar pagamento</p>
-                </div>
+                 </div>
+                */}
 
                 <Link to="/completed-orders" style={{ color: "#000" }}>
                   <div className='container_button'>
