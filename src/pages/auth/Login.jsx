@@ -53,12 +53,14 @@ export const Login = () => {
                         <input className='inp' type="password" name="password" placeholder='Senha' value={password} onChange={(e) => setPassword(e.target.value)} />
                         { emptyValues && !password ? <span className='msgError'>senha precisa ser preenchido</span> : ""}
 
-                        <div className='links-cad'>
-                            <p>Ainda não tem cadastro? <span>
-                                <Link to="/auth/register" >Clique aqui</Link>
-                            </span></p>
-                            <p><Link>Esqueceu a senha?</Link></p>
-                        </div>
+                       {/*
+                            <div className='links-cad'>
+                                <p>Ainda não tem cadastro? <span>
+                                    <Link to="/auth/register" >Clique aqui</Link>
+                                </span></p>
+                                <p><Link>Esqueceu a senha?</Link></p>
+                            </div>
+                        */}
 
                         <button className='btnLogin' type='submit'  >Entrar</button>
                     </form>
